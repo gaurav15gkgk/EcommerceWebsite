@@ -14,6 +14,7 @@ dotenv.config();
 
 // Requiring the middlewares
 app.use(morgan('dev'));
+
 app.use(bodyParser.json())
 
 app.set('view engine', 'ejs');
