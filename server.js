@@ -4,13 +4,23 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
+
+import userRoutes from './routes/users'
 
 const app = express();
 dotenv.config();
 
 // Requiring the middlewares
 app.use(morgan('dev'));
+app.use(bodyParser.json())
+
+app.set('view engine', 'ejs');
+
+app.use('/users', userRoutes)
+
+
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
